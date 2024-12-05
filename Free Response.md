@@ -15,9 +15,55 @@
 ## Identify the Algorithm present in the JavaScript Files. 
 ### Aspects of Algorithm
 Sequencing
-Selection 
-Iteration
+```JavaScript
+function addToDo(event) {
+  DOMSelectors.toDoList.innerHTML = "";
+  const inputtedToDo = DOMSelectors.userInput.value;
+  event.preventDefault();
+  ToDoItems.push(inputtedToDo);
+  displayToDoList(ToDoItems);
+  DOMSelectors.userInput.value = "";
+}
 
+function displayToDoList(array) {
+  array.forEach((inputs) => {
+    DOMSelectors.toDoList.insertAdjacentHTML(
+      "beforeend",
+      `<div class="card"><div class = "to-do-card">${inputs}</div>
+    <button type ="submit" class="remove-button" id="remove-reminder"> Remove </button>
+    </div>`
+    );
+  });
+  const removeButton = document.querySelectorAll(".remove-button");
+  removeButton.forEach((button) => {
+    button.addEventListener("click", removeToDo);
+  });
+
+  function removeToDo() {
+    const specificCard = this.parentElement;
+    const specificCardText =
+      specificCard.querySelector(".to-do-card").textContent;
+
+```
+Order of the functions are logical because without this proper ordering, the code wouldn't run properly. For example, it wouldn't make logical sense to remove an item from the list
+without adding it first.
+
+Selection 
+``` JavaScript
+if (ToDoItems[i] === specificCardText) {
+        ToDoItems.splice(i, 1);
+        break;
+      }
+    }
+    specificCard.remove();
+```
+The code above involves selection as decision making is evident through the if statement. The code uses the if statement to search through the list of ToDo items and removes it. The selection depends on whether the value of i is equal to the length of the list or not.
+
+Iteration
+```JavaScript
+ for (let i = 0; i < ToDoItems.length; i++) 
+ ```
+This line of code loops the continue addition of i and compares i with the length of the list in order to loop through the ToDo items in order to find the one being removed. This shows iteration.
 
 
 ### Question 1
